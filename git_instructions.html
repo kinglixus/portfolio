@@ -46,10 +46,23 @@
             <li><strong>Navigate to your desired directory:</strong> Use the <code>cd</code> command to go to the directory where you want to clone your project. For example, if you want it in a new folder called <code>my-gitlab-project</code> within your current workspace:
                 <pre><code>mkdir my-gitlab-project
 cd my-gitlab-project</code></pre>
+                <p><em>Example:</em></p>
+                <pre><code>C:\Users\YourUser\Projects> mkdir my-gitlab-project
+C:\Users\YourUser\Projects> cd my-gitlab-project
+C:\Users\YourUser\Projects\my-gitlab-project></code></pre>
             </li>
             <li><strong>Clone the GitLab Repository:</strong> Get the HTTPS or SSH URL for your GitLab repository.
                 <pre><code>git clone <your-gitlab-repo-url> .</code></pre>
                 <p>Replace <code><your-gitlab-repo-url></code> with the actual URL of your GitLab repository. The <code>.</code> at the end clones into the current directory.</p>
+                <p><em>Example:</em></p>
+                <pre><code>C:\Users\YourUser\Projects\my-gitlab-project> git clone https://gitlab.com/your-username/your-repo.git .
+Cloning into '.'...
+remote: Enumerating objects: 100, done.
+remote: Counting objects: 100% (100/100), done.
+remote: Compressing objects: 100% (50/50), done.
+remote: Total 100 (delta 20), reused 80 (delta 10), pack-reused 0
+Receiving objects: 100% (100/100), 10.24 MiB | 1.20 MiB/s, done.
+Resolving deltas: 100% (20/20), done.</code></pre>
             </li>
         </ol>
 
@@ -58,17 +71,44 @@ cd my-gitlab-project</code></pre>
         <ol>
             <li><strong>Check for Changes:</strong>
                 <pre><code>git status</code></pre>
+                <p><em>Example:</em></p>
+                <pre><code>C:\Users\YourUser\Projects\my-gitlab-project> git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   index.html
+
+no changes added to commit (use "git add" and/or "git commit -a")</code></pre>
             </li>
             <li><strong>Stage Changes:</strong>
                 <pre><code>git add .</code></pre>
+                <p><em>Example:</em></p>
+                <pre><code>C:\Users\YourUser\Projects\my-gitlab-project> git add .</code></pre>
             </li>
             <li><strong>Commit Changes:</strong>
                 <pre><code>git commit -m "Update project in Roo Code"</code></pre>
                 <p>Use a meaningful commit message.</p>
+                <p><em>Example:</em></p>
+                <pre><code>C:\Users\YourUser\Projects\my-gitlab-project> git commit -m "Update project in Roo Code"
+[main 8765432] Update project in Roo Code
+ 1 file changed, 2 insertions(+), 1 deletion(-)</code></pre>
             </li>
             <li><strong>Push to GitLab:</strong> Push your local branch (e.g., <code>main</code> or <code>master</code>) to your GitLab remote (usually named <code>origin</code>).
                 <pre><code>git push origin main</code></pre>
                 <p>Replace <code>main</code> with your actual branch name if it's different.</p>
+                <p><em>Example:</em></p>
+                <pre><code>C:\Users\YourUser\Projects\my-gitlab-project> git push origin main
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 327 bytes | 327.00 KiB/s, done.
+Total 3 (delta 2), reused 0 (delta 0), pack-reused 0
+To https://gitlab.com/your-username/your-repo.git
+   abcdefg..8765432  main -> main</code></pre>
             </li>
         </ol>
 
