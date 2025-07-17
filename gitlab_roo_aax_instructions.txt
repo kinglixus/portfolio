@@ -1,0 +1,76 @@
+Connecting Your GitLab Project to Roo Code on an AAX Server
+
+This guide explains how to bring your existing GitLab repository into Roo Code when Roo Code is running on an AAX server, and how to make and push changes.
+
+Assumptions:
+- You have SSH access to your AAX server.
+- Git is installed on the AAX server.
+- Your Roo Code environment on the AAX server has access to a terminal.
+
+Step 1: Access Your AAX Server and Navigate to Roo Code Workspace
+
+First, you need to SSH into your AAX server and navigate to the directory where your Roo Code workspace is located.
+
+Git Bash Command:
+```bash
+ssh your_username@your_aax_server_ip
+```
+Replace `your_username` with your SSH username and `your_aax_server_ip` with the IP address or hostname of your AAX server.
+
+Once connected, navigate to your Roo Code workspace directory. For example:
+```bash
+cd /path/to/your/roo-code-workspace
+```
+Replace `/path/to/your/roo-code-workspace` with the actual path to your Roo Code project directory on the AAX server.
+
+Step 2: Clone Your GitLab Repository
+
+Now, clone your GitLab repository into your Roo Code workspace. You can use either HTTPS or SSH URL. SSH is generally preferred for server environments as it uses SSH keys for authentication, avoiding repeated password prompts.
+
+Git Bash Command (SSH):
+```bash
+git clone git@gitlab.com:your-username/your-repo.git .
+```
+Replace `your-username` with your GitLab username and `your-repo.git` with the name of your GitLab repository. The `.` at the end clones the repository into the current directory.
+
+If you prefer HTTPS (you will be prompted for credentials):
+```bash
+git clone https://gitlab.com/your-username/your-repo.git .
+```
+
+Step 3: Make Changes in Roo Code
+
+Once the repository is cloned, you can use Roo Code to make your desired changes to the files.
+
+Step 4: Commit Your Changes and Push to GitLab
+
+After making changes, you'll use Git commands within the AAX server's terminal (accessed via SSH) to commit and push them back to your GitLab repository.
+
+Check for Changes:
+```bash
+git status
+```
+This command shows which files have been modified, added, or deleted.
+
+Stage Changes:
+```bash
+git add .
+```
+This command stages all changes in the current directory for the next commit. If you only want to stage specific files, replace `.` with the file path (e.g., `git add index.html`).
+
+Commit Changes:
+```bash
+git commit -m "Descriptive commit message"
+```
+Replace `"Descriptive commit message"` with a clear and concise message describing the changes you made.
+
+Push to GitLab:
+```bash
+git push origin main
+```
+Replace `main` with your actual branch name (e.g., `master`, `development`). `origin` is the default name for your remote repository.
+
+Important Notes:
+- Ensure your SSH key is properly set up on your AAX server and added to your GitLab account if you are using SSH for cloning and pushing.
+- If you encounter authentication issues with HTTPS, you might need to configure a Git credential helper on the AAX server or use a Personal Access Token (PAT) instead of your password.
+- All standard Git commands are available within the terminal environment on your AAX server.
