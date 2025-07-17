@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GitLab to GitHub with Roo Code</title>
+    <title>Connecting Your GitLab Project to Roo Code</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -36,8 +36,8 @@
 </head>
 <body>
     <div class="container">
-        <h1>Connecting Your GitLab Project to Roo Code and Pushing to GitHub</h1>
-        <p>This guide explains how to bring your existing GitLab repository into Roo Code, make changes, and then push those changes to a new or existing GitHub repository.</p>
+        <h1>Connecting Your GitLab Project to Roo Code</h1>
+        <p>This guide explains how to bring your existing GitLab repository into Roo Code and make changes.</p>
 
         <h2>Step 1: Clone Your GitLab Repository in Roo Code</h2>
         <p>First, you need to clone your GitLab repository into your local workspace where Roo Code can access it. Roo Code operates within your local file system, so you'll use standard Git commands.</p>
@@ -53,22 +53,8 @@ cd my-gitlab-project</code></pre>
             </li>
         </ol>
 
-        <h2>Step 2: Add a New Remote for Your GitHub Repository</h2>
-        <p>Now that your GitLab project is local, you need to tell Git about your GitHub repository. This will allow you to push changes to GitHub.</p>
-        <ol>
-            <li><strong>Create a new GitHub Repository (if you don't have one):</strong> Go to GitHub and create a new empty repository. Do NOT initialize it with a README, license, or .gitignore, as you'll be pushing your existing project.</li>
-            <li><strong>Add the GitHub Remote:</strong> In your terminal (still within your project directory), add the GitHub repository as a new remote.
-                <pre><code>git remote add github <your-github-repo-url></code></pre>
-                <p>Replace <code><your-github-repo-url></code> with the HTTPS or SSH URL of your new GitHub repository. <code>github</code> is just a name for this remote; you can choose another name if you prefer.</p>
-            </li>
-            <li><strong>Verify Remotes:</strong> You can check if both remotes are configured correctly:
-                <pre><code>git remote -v</code></pre>
-                <p>You should see both your GitLab (usually named <code>origin</code>) and GitHub (named <code>github</code> or whatever you chose) remotes listed.</p>
-            </li>
-        </ol>
-
-        <h2>Step 3: Commit Your Changes (if any) and Push to GitHub</h2>
-        <p>Before pushing, ensure any changes you've made in Roo Code are committed. Then, you can push to your GitHub repository.</p>
+        <h2>Step 2: Commit Your Changes and Push to GitLab</h2>
+        <p>After making changes in Roo Code, you'll want to commit them and push them back to your GitLab repository.</p>
         <ol>
             <li><strong>Check for Changes:</strong>
                 <pre><code>git status</code></pre>
@@ -77,19 +63,18 @@ cd my-gitlab-project</code></pre>
                 <pre><code>git add .</code></pre>
             </li>
             <li><strong>Commit Changes:</strong>
-                <pre><code>git commit -m "Initial commit from GitLab to GitHub"</code></pre>
+                <pre><code>git commit -m "Update project in Roo Code"</code></pre>
                 <p>Use a meaningful commit message.</p>
             </li>
-            <li><strong>Push to GitHub:</strong> Push your local branch (e.g., <code>main</code> or <code>master</code>) to the GitHub remote.
-                <pre><code>git push -u github main</code></pre>
-                <p>Replace <code>main</code> with your actual branch name if it's different. The <code>-u</code> flag sets the upstream branch, so future pushes to GitHub can just be <code>git push github</code>.</p>
+            <li><strong>Push to GitLab:</strong> Push your local branch (e.g., <code>main</code> or <code>master</code>) to your GitLab remote (usually named <code>origin</code>).
+                <pre><code>git push origin main</code></pre>
+                <p>Replace <code>main</code> with your actual branch name if it's different.</p>
             </li>
         </ol>
 
         <h2>Important Notes:</h2>
         <ul>
-            <li>You will likely be prompted for your Git credentials (username and password/personal access token) for both GitLab and GitHub during these operations.</li>
-            <li>If you want to keep both repositories in sync, you'll need to pull from GitLab (<code>git pull origin main</code>) and push to both (<code>git push origin main</code> and <code>git push github main</code>) as you make changes.</li>
+            <li>You will likely be prompted for your Git credentials (username and password/personal access token) for GitLab during these operations.</li>
             <li>Roo Code provides a terminal environment, so all standard Git commands are available.</li>
         </ul>
     </div>
