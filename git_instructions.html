@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitLab to GitHub with Roo Code</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba="0, 0, 0, 0.1";
+        }
+        h1, h2 {
+            color: #0056b3;
+        }
+        pre {
+            background-color: #eee;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        code {
+            font-family: "Courier New", Courier, monospace;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Connecting Your GitLab Project to Roo Code and Pushing to GitHub</h1>
+        <p>This guide explains how to bring your existing GitLab repository into Roo Code, make changes, and then push those changes to a new or existing GitHub repository.</p>
+
+        <h2>Step 1: Clone Your GitLab Repository in Roo Code</h2>
+        <p>First, you need to clone your GitLab repository into your local workspace where Roo Code can access it. Roo Code operates within your local file system, so you'll use standard Git commands.</p>
+        <ol>
+            <li><strong>Open a Terminal in Roo Code:</strong> If you're interacting with Roo Code, you can request to execute a command in a new terminal.</li>
+            <li><strong>Navigate to your desired directory:</strong> Use the <code>cd</code> command to go to the directory where you want to clone your project. For example, if you want it in a new folder called <code>my-gitlab-project</code> within your current workspace:
+                <pre><code>mkdir my-gitlab-project
+cd my-gitlab-project</code></pre>
+            </li>
+            <li><strong>Clone the GitLab Repository:</strong> Get the HTTPS or SSH URL for your GitLab repository.
+                <pre><code>git clone <your-gitlab-repo-url> .</code></pre>
+                <p>Replace <code><your-gitlab-repo-url></code> with the actual URL of your GitLab repository. The <code>.</code> at the end clones into the current directory.</p>
+            </li>
+        </ol>
+
+        <h2>Step 2: Add a New Remote for Your GitHub Repository</h2>
+        <p>Now that your GitLab project is local, you need to tell Git about your GitHub repository. This will allow you to push changes to GitHub.</p>
+        <ol>
+            <li><strong>Create a new GitHub Repository (if you don't have one):</strong> Go to GitHub and create a new empty repository. Do NOT initialize it with a README, license, or .gitignore, as you'll be pushing your existing project.</li>
+            <li><strong>Add the GitHub Remote:</strong> In your terminal (still within your project directory), add the GitHub repository as a new remote.
+                <pre><code>git remote add github <your-github-repo-url></code></pre>
+                <p>Replace <code><your-github-repo-url></code> with the HTTPS or SSH URL of your new GitHub repository. <code>github</code> is just a name for this remote; you can choose another name if you prefer.</p>
+            </li>
+            <li><strong>Verify Remotes:</strong> You can check if both remotes are configured correctly:
+                <pre><code>git remote -v</code></pre>
+                <p>You should see both your GitLab (usually named <code>origin</code>) and GitHub (named <code>github</code> or whatever you chose) remotes listed.</p>
+            </li>
+        </ol>
+
+        <h2>Step 3: Commit Your Changes (if any) and Push to GitHub</h2>
+        <p>Before pushing, ensure any changes you've made in Roo Code are committed. Then, you can push to your GitHub repository.</p>
+        <ol>
+            <li><strong>Check for Changes:</strong>
+                <pre><code>git status</code></pre>
+            </li>
+            <li><strong>Stage Changes:</strong>
+                <pre><code>git add .</code></pre>
+            </li>
+            <li><strong>Commit Changes:</strong>
+                <pre><code>git commit -m "Initial commit from GitLab to GitHub"</code></pre>
+                <p>Use a meaningful commit message.</p>
+            </li>
+            <li><strong>Push to GitHub:</strong> Push your local branch (e.g., <code>main</code> or <code>master</code>) to the GitHub remote.
+                <pre><code>git push -u github main</code></pre>
+                <p>Replace <code>main</code> with your actual branch name if it's different. The <code>-u</code> flag sets the upstream branch, so future pushes to GitHub can just be <code>git push github</code>.</p>
+            </li>
+        </ol>
+
+        <h2>Important Notes:</h2>
+        <ul>
+            <li>You will likely be prompted for your Git credentials (username and password/personal access token) for both GitLab and GitHub during these operations.</li>
+            <li>If you want to keep both repositories in sync, you'll need to pull from GitLab (<code>git pull origin main</code>) and push to both (<code>git push origin main</code> and <code>git push github main</code>) as you make changes.</li>
+            <li>Roo Code provides a terminal environment, so all standard Git commands are available.</li>
+        </ul>
+    </div>
+</body>
+</html>
